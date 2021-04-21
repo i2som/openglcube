@@ -67,10 +67,19 @@ int main(int argc, char *argv[])
     app.setApplicationVersion("0.1");
 #ifndef QT_NO_OPENGL
     MainWindow mainwindow;
-    mainwindow.show();
+//    mainwindow.show();
 #else
     QLabel note("OpenGL Support required");
     note.show();
 #endif
+
+#if defined(PLATFORM_X86)
+    // PC test
+    mainwindow.show();
+    mainwindow.setGeometry(200, 100, 800, 600);
+#elif defined(PLATFORM_ARM)
+    mainwindow.showFullScreen();
+#endif
+
     return app.exec();
 }

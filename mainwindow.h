@@ -6,6 +6,10 @@
 #include <QTimer>
 #include <QLabel>
 
+#include <QDebug>
+#include <QScreen>
+#include <QResizeEvent>
+
 namespace Ui {
 class MainWindow;
 }
@@ -18,6 +22,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+protected:
+    void resizeEvent(QResizeEvent *event);
+
 private:
     Ui::MainWindow *ui;
     unsigned int fps_counter;
@@ -26,6 +33,7 @@ private:
 
 private slots:
     void update_fps();
+    void on_pushButton_exit_clicked();
 };
 
 #endif // MAINWINDOW_H
